@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="frogaDB8.MainPage">
+
+    <!-- Menu-barra nagusia -->
+    <ContentPage.MenuBarItems>
+        <!-- Liburuak ataleko menu-elementua -->
+        <MenuBarItem Text="Liburuak">
+            <!-- Liburuetara joateko aukera -->
+            <MenuFlyoutItem Text="Liburuetara joan" Clicked="OnLiburuakClicked"/>
+        </MenuBarItem>
+
+        <!-- Gestioa ataleko menu-elementua -->
+        <MenuBarItem Text="Gestioa">
+            <!-- Maileguak kudeatzeko aukera -->
+            <MenuFlyoutItem Text="Mailegua" Clicked="OnMaileguaClicked"/>
+            <!-- Epez kanpoko maileguen ikuspegira joateko aukera -->
+            <MenuFlyoutItem Text="Epez kanpo" Clicked="OnEpezKanpoClicked"/>
+        </MenuBarItem>
+
+        <!-- Aplikazioa ixteko menu-elementua -->
+        <MenuBarItem Text="Atera">
+            <MenuFlyoutItem Text="Aplikazioa itxi" Clicked="OnAteraClicked"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <!-- Orrialdearen eduki nagusia -->
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <!-- Ongi etorria emateko goiburua -->
+        <Label Text="ONGI ETORRI LIBURUTEGIRA"
+               FontSize="Large"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+
+        <!-- Liburutegiaren irudia erdian kokatua -->
+        <Image Source="liburutegia.jpg"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               HeightRequest="600"
+               WidthRequest="600" />
+    </StackLayout>
+
+</ContentPage>

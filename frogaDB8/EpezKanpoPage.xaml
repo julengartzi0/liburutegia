@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="frogaDB8.EpezKanpoPage">
+
+    <!-- Orrialdearen diseinua StackLayout erabiliz -->
+    <StackLayout Padding="20">
+        <!-- Orrialdearen goiburua -->
+        <Label Text="Epez kanpoko mailegua" 
+               FontAttributes="Bold" 
+               FontSize="Large" 
+               HorizontalOptions="Center" />
+
+        <!-- Epez kanpoko maileguen zerrenda -->
+        <ListView ItemsSource="{Binding EpezKanpoCollection}">
+            <!-- Zerrendaren elementuen txantiloia -->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <!-- Bazkidearen izena erakusten duen etiketa -->
+                            <Label Text="{Binding BazkideaIzena}" FontAttributes="Bold" />
+                            <!-- Liburuaren izena erakusten duen etiketa -->
+                            <Label Text="{Binding LiburuaIzena}" FontAttributes="Italic" />
+                            <!-- Liburuaren izena erakusten duen etiketa -->
+                            <Label Text="{Binding MaileguData}" FontAttributes="Italic" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

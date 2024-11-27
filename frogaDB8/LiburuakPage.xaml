@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:frogaDB8.ViewModels"
+             x:Class="frogaDB8.LiburuakPage"
+             Title="Liburuak">
+
+    <StackLayout Padding="20">
+        <!-- Nabigazio eta ekintza botoiak -->
+        <Grid ColumnDefinitions="Auto, Auto, *, Auto, Auto" 
+              RowDefinitions="Auto" ColumnSpacing="10" Margin="0,0,0,20">
+
+            <!-- Aurreko liburura joateko botoia -->
+            <Button Text="←" Grid.Column="0" 
+                    Command="{Binding AurrekoaCommand}"
+                    BackgroundColor="CadetBlue"
+                    TextColor="White"
+                    HorizontalOptions="Start"/>
+
+            <!-- Hurrengo liburura joateko botoia -->
+            <Button Text="→" Grid.Column="1" 
+                    Command="{Binding HurrengoaCommand}"
+                    BackgroundColor="CadetBlue"
+                    TextColor="White"
+                    HorizontalOptions="Start"/>
+
+            <!-- Liburu berria gehitzeko botoia -->
+            <Button Text="+" Grid.Column="3" 
+                    Command="{Binding BerriaCommand}"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    HorizontalOptions="End"/>
+
+            <!-- Liburua ezabatzeko botoia -->
+            <Button Text="X" Grid.Column="4" 
+                    Command="{Binding EzabatuCommand}"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    HorizontalOptions="End"/>
+
+            <!-- Liburua gordetzeko botoia -->
+            <Button Text="Gorde" Grid.Column="2" 
+                    Command="{Binding GordeCommand}"
+                    BackgroundColor="YellowGreen"
+                    TextColor="White"
+                    HorizontalOptions="Center"/>
+        </Grid>
+
+        <!-- Orrialdeko eduki nagusia -->
+        <ScrollView>
+            <StackLayout>
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" 
+                      ColumnDefinitions="Auto, *" ColumnSpacing="10" RowSpacing="15">
+
+                    <!-- ID eremua (irakurgarri baina ez editagarria) -->
+                    <Label Text="ID:" Grid.Row="0" Grid.Column="0"/>
+                    <Entry Text="{Binding CurrentLiburua.Id}" Grid.Row="0" Grid.Column="1" IsEnabled="False"/>
+
+                    <!-- ISBN zenbakia (zenbakizkoa) -->
+                    <Label Text="ISBN:" Grid.Row="1" Grid.Column="0"/>
+                    <Entry Text="{Binding CurrentLiburua.ISBN}" Grid.Row="1" Grid.Column="1" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" />
+
+                    <!-- Liburuaren izenburua -->
+                    <Label Text="Izenburua:" Grid.Row="2" Grid.Column="0"/>
+                    <Entry Text="{Binding CurrentLiburua.Izenburua}" Grid.Row="2" Grid.Column="1"/>
+
+                    <!-- Argitaletxea aukeratzeko menua -->
+                    <Label Text="Editoriala:" Grid.Row="3" Grid.Column="0"/>
+                    <Picker ItemsSource="{Binding ArgitaletxeakCollection}"
+                            SelectedItem="{Binding SelectedArgitaletxea}"
+                            ItemDisplayBinding="{Binding Izena}"
+                            Grid.Row="3" Grid.Column="1"/>
+
+                    <!-- Egilea aukeratzeko menua -->
+                    <Label Text="Egilea:" Grid.Row="4" Grid.Column="0"/>
+                    <Picker ItemsSource="{Binding EgileakCollection}"
+                            SelectedItem="{Binding SelectedEgilea}"
+                            ItemDisplayBinding="{Binding Izena}"
+                            Grid.Row="4" Grid.Column="1"/>
+
+                    <!-- Sinopsia editatzeko eremua -->
+                    <Label Text="Sinopsia:" Grid.Row="5" Grid.Column="0"/>
+                    <Editor Text="{Binding CurrentLiburua.Sinopsia}" Grid.Row="5" Grid.Column="1" HeightRequest="100"/>
+
+                    <!-- Kopien kopurua (zenbakizkoa) -->
+                    <Label Text="Kopiak:" Grid.Row="6" Grid.Column="0"/>
+                    <Entry Text="{Binding CurrentLiburua.Kopiak}" Grid.Row="6" Grid.Column="1" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" />
+
+                    <!-- Hizkuntza aukeratzeko menua -->
+                    <Label Text="Hizkuntza:" Grid.Row="7" Grid.Column="0"/>
+                    <Picker ItemsSource="{Binding HizkuntzakCollection}"
+                            SelectedItem="{Binding SelectedHizkuntza}"
+                            ItemDisplayBinding="{Binding Nombre}"
+                            Grid.Row="7" Grid.Column="1"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>
